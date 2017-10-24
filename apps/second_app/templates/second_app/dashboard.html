@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Success! Welcome, {{request.session.first_name}}</h1>
+    <a href="/logout">Logout here</a><br>
+    <a href="/second_app/add_pet">Add a Pet here</a>
+    <h3>Your Pets</h3>
+    {% for pet in user %}
+        <p>{{pet.name}} the {{pet.pettype}} <a href="/second_app/delete/{{pet.id}}">Delete</a></p> 
+    {%endfor%}
+    <h3>Other Users</h3>
+    {% for person in other_users %}
+        <p><a href="/second_app/show/{{person.id}}">{{person.first_name}} {{person.last_name}}</a> | {{person.pets.count}} pets</p> 
+    {%endfor%}
+</body>
+</html>
